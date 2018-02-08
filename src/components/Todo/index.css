@@ -1,0 +1,21 @@
+.Todo {
+  display: inline-block;
+  margin: 0 6px 6px 0;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.15);
+  color: #333;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: .225s ease-out;
+}
+
+.Todo.Todo--completed {
+  opacity: .5;
+  text-decoration: line-through;
+}
+
+.Todo:hover {
+  box-shadow: 0 3px 11px rgba(0,0,0,0.2);
+  border: 1px solid steelblue;
+}

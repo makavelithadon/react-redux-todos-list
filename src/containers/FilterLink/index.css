@@ -1,0 +1,22 @@
+.filter-link {
+  padding: 10px 8px;
+  color: #ccc;
+  display: inline-block;
+  margin-right: 5px;
+  transition: .225s ease-out;
+  text-decoration: none;
+  font-weight: 400;
+  border-radius: 3px;
+  border: 1px solid transparent;
+}
+
+.filter-link::first-letter {
+  text-transform: uppercase;
+}
+
+.filter-link.active {
+  color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 7px rgba(0,0,0,0.15);
+  background: steelblue;
+}
