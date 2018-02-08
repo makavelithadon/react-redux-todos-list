@@ -7,10 +7,8 @@ const visibilityFilter = (
   switch (action.type) {
     case SET_VISIBILITY_FILTER:
       return action.payload;
-      break;
     default:
       return state;
-      break;
   }
 }
 

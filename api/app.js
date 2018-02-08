@@ -53,15 +53,25 @@ const saveTodos = newTodos => {
 
 app.post('/todo', async (req, res) => {
   try {
+    console.log(req.body)
     const { todo } = req.body;
     const todos = await readTodos();
     const newTodos = [ ...todos, todo ];
     await saveTodos(newTodos);
-    res.send({ error: 0, message: 'Todo was saved succesfully.', todos: newTodos })   
+    res.send({ error: 0, message: 'Todo was saved succesfully.', todos: newTodos }); 
+  } catch (err) {
+    res.send({ error: 1, message: err.toString() })
+  } 
+})
+
+app.post('/todos', async (req, res) => {
+  try {
+    const { todos } = req.body;
+    await saveTodos(todos);
+    res.send({ error: 0, message: 'Todos was saved succesfully.', todos });
   } catch (err) {
     res.send({ error: 1, message: err.toString() })
   }
-  
 })
 
 app.listen(port, () => {

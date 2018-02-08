@@ -1,7 +1,6 @@
-import React from 'react'
 import TodosList from "./../../components/TodosList";
 import { getVisibleTodos, getVisibilityFilter } from "./../../reducers";
-import { toggleTodo } from "./../../actions";
+import { toggleTodo, fetchTodos } from "./../../actions";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
@@ -9,6 +8,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  fetchTodos: () => fetchTodos(dispatch),
   onClickTodo: id => dispatch(toggleTodo(id))
 })
 

@@ -1,8 +1,47 @@
 [
   {
-    "text": "Lorem ipsum..."
+    "text": "Lorem ipsum...",
+    "completed": false,
+    "id": "485648844848-565616545648-45648894"
   },
   {
-    "text": "Lorem ipsum..."
+    "text": "Lorem ipsum again...",
+    "completed": false,
+    "id": "4856488744848-565616545648-45648894"
+  },
+  {
+    "text": "zezczrzere",
+    "id": "4dfabab1-ff72-47e8-935f-8ce9c38ce4c7",
+    "completed": false
+  },
+  {
+    "text": "zxrzere",
+    "id": "48fc3ddc-b3f8-480c-8caa-8947c4e8ee43",
+    "completed": false
+  },
+  {
+    "text": "zxerzercezrr retrezterte \\r\\erzerze",
+    "id": "f5f029b1-0e88-4c5b-8d9a-17f987651b5a",
+    "completed": false
+  },
+  {
+    "text": "ezrzerzerzer /r/n",
+    "id": "72c7ce83-6335-49f4-8829-a5f74b677734",
+    "completed": false
+  },
+  {
+    "text": "zrzerzerz \\r\\n",
+    "id": "e48d632d-faf1-48c5-b95e-d319facde87d",
+    "completed": false
+  },
+  {
+    "text": "Hello friends!",
+    "id": "84a4fc5a-3747-408c-a3b3-914ee93b7d38",
+    "completed": false
+  },
+  {
+    "text": "Hello all",
+    "id": "e03467f2-b72f-4860-8ec5-28e06d9a3185",
+    "completed": false
   }
 ]

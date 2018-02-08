@@ -17,7 +17,7 @@ const FilterLink = ({
         className
         ? ` ${className}`
         : ''}${activeClass}`}
-      href="#"
+      href=""
       onClick={e => {
         e.preventDefault()
         onClick(filter)

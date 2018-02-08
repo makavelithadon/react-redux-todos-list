@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from "react-redux";
 import FilterLink from "./../containers/FilterLink/";
 
 class FilterLinks extends Component {

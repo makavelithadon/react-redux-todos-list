@@ -1,4 +1,4 @@
-import uuid from "uuid";
+import { combineReducers } from "redux";
 
 import {
   ADD_TODO,
@@ -16,14 +16,12 @@ const todo = (
         ...state,
         completed: !state.completed
       };
-      break;
     default:
       return state;
-      break;
   }
 }
 
-const todos = (
+const items = (
   state = [],
   action
 ) => {
@@ -31,13 +29,8 @@ const todos = (
     case ADD_TODO:
       return [
         ...state,
-        {
-          ...action.payload,
-          id: uuid.v4(),
-          completed: false
-        }
+        action.payload
       ];
-      break;
     case TOGGLE_TODO:
       const foundTodo = state.find(todo => todo.id === action.payload)
       const foundTodoIndex = state.findIndex(todo => todo.id === action.payload)
@@ -46,17 +39,50 @@ const todos = (
         todo(foundTodo, action),
         ...state.slice(foundTodoIndex+1),
       ];
-      break;
     case DELETE_TODO:
       const index = state.findindex(todo => todo.id === action.payload);
       return [
         ...state.slice(0, index),
         ...state.slice(index+1)
       ];
-      break;
+    case 'FETCH_TODOS_SUCCESS':
+      return action.payload.todos;
+    case 'FETCH_TODOS_ERROR':
+      return [];
     default:
       return state;
-      break;
+  }
+}
+
+export const error = (
+  state = null,
+  action
+) => {
+  switch (action.type) {
+    case 'FETCH_TODOS_ERROR':
+      return action.payload.error;
+    case 'FETCH_TODOS_BEGIN':
+      return null;
+    case 'FETCH_TODOS_SUCCESS':
+      return null;
+    default:
+      return state;
+  }
+}
+
+export const loading = (
+  state = false,
+  action
+) => {
+  switch (action.type) {
+    case 'FETCH_TODOS_BEGIN':
+      return true;
+    case 'FETCH_TODOS_ERROR':
+      return false;
+    case 'FETCH_TODOS_SUCCESS':
+      return false;
+    default:
+      return state;
   }
 }
 
@@ -67,17 +93,23 @@ export const getVisibleTodos = (
   switch (filter) {
     case 'all':
       return state;
-      break;
     case 'completed':
-      return state.filter(todo => todo.completed);
-      break;
+      return {
+        ...state,
+        items: state.items.filter(todo => todo.completed)
+      };
     case 'active':
-      return state.filter(todo => !todo.completed);
-      break;
+    return {
+      ...state,
+        items: state.items.filter(todo => !todo.completed)
+      };
     default:
-      throw new Error('wrong filter was passed.')
-      break;
+      throw new Error('Wrong filter was passed.')
   }
 }
 
-export default todos;
+export default combineReducers({
+  loading,
+  error,
+  items
+});
