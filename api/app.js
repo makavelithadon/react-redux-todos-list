@@ -30,15 +30,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(cors(corsOptions));
 
-app.get('/todos', async (req, res) => {
-  pReadFile(todosPath, 'utf-8')
-    .then(toJSON)
-    .then(todos => res.send(todos))
-    .catch(err => {
-      res.send({ error: 1, message: err.toString() });
-    });
-})
-
 const readTodos = async () => {
   let todos = await pReadFile(todosPath, 'utf-8');
   todos = !todos
@@ -48,19 +39,30 @@ const readTodos = async () => {
 }
 
 const saveTodos = newTodos => {
-  return pWriteFile(todosPath, toText(newTodos))
+  return pWriteFile(todosPath, toText(newTodos));
 }
+
+// routes
+
+app.get('/todos', async (req, res) => {
+  try {
+    let todos = await pReadFile(todosPath, 'utf-8');
+    todos = toJSON(todos);
+    res.send({ error: 0, todos });
+  } catch (err) {
+    res.send({ error: 1, message: err.toString() });
+  }
+})
 
 app.post('/todo', async (req, res) => {
   try {
-    console.log(req.body)
     const { todo } = req.body;
     const todos = await readTodos();
     const newTodos = [ ...todos, todo ];
     await saveTodos(newTodos);
     res.send({ error: 0, message: 'Todo was saved succesfully.', todos: newTodos }); 
   } catch (err) {
-    res.send({ error: 1, message: err.toString() })
+    res.send({ error: 1, message: err.toString() });
   } 
 })
 
@@ -70,10 +72,10 @@ app.post('/todos', async (req, res) => {
     await saveTodos(todos);
     res.send({ error: 0, message: 'Todos was saved succesfully.', todos });
   } catch (err) {
-    res.send({ error: 1, message: err.toString() })
+    res.send({ error: 1, message: err.toString() });
   }
 })
 
 app.listen(port, () => {
-  console.log('Listening on port %d', port)
+  console.log('Listening on port %d', port);
 })

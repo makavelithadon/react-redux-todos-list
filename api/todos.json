@@ -43,5 +43,20 @@
     "text": "Hello all",
     "id": "e03467f2-b72f-4860-8ec5-28e06d9a3185",
     "completed": false
+  },
+  {
+    "text": "New Todo to realize ASAP!",
+    "id": "5bc3f341-644f-4e51-b3ff-56f6eef952de",
+    "completed": false
+  },
+  {
+    "text": "Again a new todo",
+    "id": "bf65091e-6a37-4470-ab1b-66ba9444a8f2",
+    "completed": false
+  },
+  {
+    "text": "...",
+    "id": "d35dd3af-9ad1-4fea-9231-bd9b553e30ab",
+    "completed": false
   }
 ]

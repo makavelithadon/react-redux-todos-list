@@ -43,8 +43,8 @@ export const fetchTodos = dispatch => {
   dispatch(fetchTodosBegin());
   fetch('http://localhost:8882/todos')
     .then(res => res.json())
-    .then(todos => {
-      dispatch(fetchTodosSuccess(todos));
+    .then(res => {
+      dispatch(fetchTodosSuccess(res.todos));
     })
     .catch(err => dispatch(fetchTodosError(err)));
 }
